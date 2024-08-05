@@ -1,13 +1,13 @@
 const {Schema, model, ObjectId} = require("mongoose");
 
-const chatRoomSchema = new Schema({
+const chatRoomSchema = (collectionChatRoom) => new Schema({
     name: {
         type: String,
         required: true,
         unique: true
     }
-});
+}, {collection: collectionChatRoom});
 
-const chatRoomsModel = model('chatRooms', chatRoomSchema);
+const chatRoomsModel = model('chatRooms', chatRoomSchema('chatRooms'));
 
 module.exports = {chatRoomsModel}

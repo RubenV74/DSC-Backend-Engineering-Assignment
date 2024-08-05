@@ -1,6 +1,6 @@
 const {Schema, model, ObjectId} = require("mongoose");
 
-const messageSchema = (collectionName) =>  new Schema({
+const messageSchema = (collectionName) => new Schema({
     content: {
         type: String,
         required: [true, 'message content required']

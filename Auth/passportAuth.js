@@ -33,4 +33,4 @@ const  passportConfig = (passport)=> {
     return passport
 }
 
-export default passportConfig;
+module.exports = passportConfig;
