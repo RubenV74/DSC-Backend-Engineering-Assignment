@@ -1,5 +1,6 @@
 const {Router}= require("express");
 const messagesController = require('../Controllers/messages.controller');
+const chatRoomsController = require('../Controllers/messages.controller');
 
 const messagesRouter = new Router();
 
