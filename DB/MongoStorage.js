@@ -18,6 +18,9 @@ class StorageConnection{
     async find(filter){
         return await this.Model.find(filter);
     }
+    async findOne(filter){
+        return await  this.Model.findOne(filter);
+    }
 
     async insert(data){
         return this.Model.create(data);
