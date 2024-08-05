@@ -1,18 +1,15 @@
 const {Router}= require("express");
 const messagesController = require('../Controllers/messages.controller');
-const chatRoomsController = require('../Controllers/messages.controller');
 
 const messagesRouter = new Router();
 
-messagesRouter.get("/", messagesController.getAllFamilies);
-messagesRouter.get("/id/:id", messagesController.getFamilyById);
+messagesRouter.get("/", messagesController.getAllMessages);
+messagesRouter.get("/id/:id", messagesController.getMessageById);
+messagesRouter.post("/", messagesController.createMessage);
+messagesRouter.put("/", messagesController.editMessage);
+messagesRouter.delete("/", messagesController.deleteMessage);
 
-messagesRouter.post("/", familyController.createFamily);
-messagesRouter.put("/", familyController.editFamily);
-messagesRouter.delete("/", familyController.deleteFamily);
 
-
-//
 
 module.exports={
     messagesRouter

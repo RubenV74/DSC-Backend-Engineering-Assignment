@@ -1,4 +1,4 @@
-const {chatRoomsStorage} = require("../DB/index.db");
+const {chatRoomsStorage, messagesStorage} = require("../DB/index.db");
 const {Types} = require('mongoose');
 
 
@@ -16,7 +16,15 @@ const getRoomById = async (req, res, next) => {
             res.status(200).json(room);
 }
 
+// creat chatRoom
+const createChatRoom = async (req, res) => {
+    const {body} = req;
+    await messagesStorage.insert(body);
+    res.status(200).send('Chat Room saved successfully');
+}
+
 module.exports = {
     getAllRooms,
-    getRoomById
+    getRoomById,
+    createChatRoom
 }
