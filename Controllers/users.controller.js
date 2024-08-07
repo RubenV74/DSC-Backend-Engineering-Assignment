@@ -17,8 +17,14 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
 
     const {body} = req;
-    await usersStorage.insert(body);
-    res.status(200).send('User saved successfully');
+    try {
+        await usersStorage.insert(body);
+        res.status(200).send('User saved successfully');
+    }
+    catch(err)
+    {
+        res.status(300).send(err);
+    }
 }
 
 

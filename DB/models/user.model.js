@@ -1,4 +1,5 @@
 const {Schema, model, ObjectId} = require("mongoose");
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = (collectionUser) => new Schema({
     username: {
@@ -6,12 +7,9 @@ const userSchema = (collectionUser) => new Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    }
 }, {collection: collectionUser} );
 
-const usersModel = model('users', userSchema('users'));
+const User = userSchema('users').plugin(passportLocalMongoose)
+const usersModel = model('User', User);
 
-module.exports = {usersModel}
+module.exports = usersModel;
