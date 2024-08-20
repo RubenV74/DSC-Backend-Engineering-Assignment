@@ -1,4 +1,4 @@
-const {Schema, model, ObjectId} = require("mongoose");
+const {Schema, model, ObjectId, Types} = require("mongoose");
 
 const messageSchema = (collectionName) => new Schema({
     content: {
@@ -10,11 +10,18 @@ const messageSchema = (collectionName) => new Schema({
         required: [true, 'message senderId required'],
         ref: 'users'
     },
+    senderName:{
+        type: String,
+        required: [true, 'sender name is required']
+    },
     receiversIds: [{type: ObjectId, ref:'users'}],
     chatRoomId:{
         type:ObjectId,
-        required: [true, 'message chatRoomId required'],
+        // required: [true, 'message chatRoomId required'],
         ref:"chatRooms"
+    },
+    time:{
+        type: Date
     }
 },{collection: collectionName, timestamps: true});
 
