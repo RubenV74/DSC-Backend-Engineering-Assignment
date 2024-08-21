@@ -11,7 +11,6 @@ This repository contains the backend implementation for the DCS (Distributed Com
 - [API Endpoints](#api-endpoints)
 - [WebSocket Support](#websocket-support)
 - [Project Structure](#project-structure)
-- [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -82,9 +81,9 @@ Make sure to add `.env` to your `.gitignore` file.
    - Method: `POST`
    - Description: Send a new message.
 
-## WebSocket Support
+## Socket Support
 
-To use WebSocket for real-time communication, connect to the server at `ws://your_server_address:3000`. Once connected, you can send and receive messages in real-time.
+To use Socket for real-time communication, connect to the server at `ws://your_server_address:3003`. Once connected, you can send and receive messages in real-time.
 
 ## Project Structure
 
