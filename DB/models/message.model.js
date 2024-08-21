@@ -8,13 +8,9 @@ const messageSchema = (collectionName) => new Schema({
     senderId:{
         type: ObjectId,
         required: [true, 'message senderId required'],
-        ref: 'users'
+        ref: 'User'
     },
-    senderName:{
-        type: String,
-        required: [true, 'sender name is required']
-    },
-    receiversIds: [{type: ObjectId, ref:'users'}],
+    receiversIds: [{type: ObjectId, ref:'User'}],
     chatRoomId:{
         type:ObjectId,
         // required: [true, 'message chatRoomId required'],

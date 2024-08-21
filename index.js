@@ -19,6 +19,7 @@ const io = require('socket.io')(http, {cors: {
 app.use(cors());
 app.use(session({
     secret: process.env.SESSION_SECRET,
+    cookie: {maxAge: 3000},
     resave: false,
     saveUninitialized: false
 }));
@@ -45,7 +46,10 @@ io.on('connection', (socket) => { // socket object may be used to send specific 
     socket.emit('connection', null);
     socket.on('send-message', message => {
         messagesStorage.insert(message).then(r=>{
-            io.emit('message', message);
+            messagesStorage.findAndPopulate({_id:r._id}, 'senderId')
+                .then(m=> {
+                    io.emit('message', ...m)
+                })
         })
 
     });

@@ -19,6 +19,9 @@ class StorageConnection{
         return await this.Model.find(filter);
     }
 
+    async findAndPopulate(filter, path){
+        return await this.Model.find(filter).populate(path).exec();
+    }
     async findOne(filter){
         return await  this.Model.findOne(filter);
     }

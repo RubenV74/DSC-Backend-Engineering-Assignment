@@ -14,6 +14,11 @@ const getMessageById = async (req, res) => {
         res.status(200).json(message);
 }
 
+const getAllMessagesWithUsers = async (req,res)=> {
+    const messages = await messagesStorage.findAndPopulate({}, 'senderId');
+    res.status(200).send(messages);
+}
+
 const createMessage = async (req, res) => {
 
         const {body} = req;
@@ -39,6 +44,7 @@ const deleteMessage = async (req, res) => {
 
 module.exports ={
     getAllMessages,
+    getAllMessagesWithUsers,
     getMessageById,
     createMessage,
     editMessage,
